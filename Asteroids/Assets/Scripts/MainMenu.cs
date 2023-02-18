@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+// --------------------
+// @Author Emily Canto
+// --------------------
+
 public class MainMenu : MonoBehaviour
 {
    public void StartGame(){
