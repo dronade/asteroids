@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 // --------------------
@@ -11,38 +10,40 @@ public class Player : MonoBehaviour
     public float thrustSpeed = 1.0f;
     public float turnSpeed = 1.0f;
     public Bullet bulletPrefab;
-
+    
     // --- Private variables: ---
     private Rigidbody2D _rigidBody;
-    private bool _thrusting;
+    private bool _thrust;
     private float _turningDirection;
 
     private void Awake() {
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // --- Determine which buttons player is pressing
+    //TODO: change this input system to command pattern
     private void Update(){
+        _thrust = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
 
-        _thrusting = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
-
+        // Movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
             _turningDirection = 1.0f;
+
         } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
             _turningDirection = -1.0f;
+
         } else {
             _turningDirection = 0.0f;
         }
 
+        // Shooting
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)){
             Shoot();
         }
     }
 
-    // --- Turn/Thrust based on player input (from Update())
+    // --- Turn/Thrust based on player input
     private void FixedUpdate() {
-
-        if (_thrusting){
+        if (_thrust){
             _rigidBody.AddForce(this.transform.up * this.thrustSpeed);
         }
 
@@ -52,9 +53,11 @@ public class Player : MonoBehaviour
     
     }
 
-    // --- Create a new instance of Bullet, and shoot it using the location (and rotation) of the player
+    // --- Create a new instance of Bullet, and shoot it using the location + rotation of player
     private void Shoot(){
-        Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
+        Bullet bullet = Instantiate(this.bulletPrefab, 
+        this.transform.position, this.transform.rotation);
+
         bullet.Projectile(this.transform.up);
     }
 
