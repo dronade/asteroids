@@ -7,8 +7,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // --- Public variables: ---
-    public float thrustSpeed = 1.0f;
-    public float turnSpeed = 1.0f;
+    public float thrustSpeed = 2.0f;
+    public float turnSpeed = 0.5f;
     public Bullet bulletPrefab;
     
     // --- Private variables: ---
