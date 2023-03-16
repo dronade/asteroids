@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // --- Public variables: ---
-    public float thrustSpeed = 2.0f;
-    public float turnSpeed = 0.5f;
+    // --- Variables: ---
     public Bullet bulletPrefab;
-    
-    // --- Private variables: ---
+    [SerializeField]private float thrustSpeed = 2.0f;
+    [SerializeField]private float turnSpeed = 0.5f;
     private Rigidbody2D _rigidBody;
     private bool _thrust;
     private float _turningDirection;

@@ -9,11 +9,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    // --- Public variables: ---
-    public float speed = 500.0f;
-    public float lifetime = 7.0f;
-
-    // --- Private variables: ---
+    // --- Variables: ---
+    [SerializeField]private float speed = 500.0f;
+    [SerializeField]private float lifetime = 7.0f;
     private Rigidbody2D _rigidBody;
 
     private void Awake() {
