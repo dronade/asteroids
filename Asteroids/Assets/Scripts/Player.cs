@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
 {
     // --- Variables: ---
     public Bullet bulletPrefab;
-    [SerializeField]private float thrustSpeed = 2.0f;
-    [SerializeField]private float turnSpeed = 0.5f;
+    [SerializeField]private float _thrustSpeed = 2.0f;
+    [SerializeField]private float _turnSpeed = 0.5f;
     private Rigidbody2D _rigidBody;
     private bool _thrust;
     private float _turningDirection;
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     }
 
     //TODO: change this input system to command pattern
+    //TODO:  add hull integrity
     private void Update(){
         _thrust = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
 
@@ -42,11 +43,11 @@ public class Player : MonoBehaviour
     // --- Turn/Thrust based on player input
     private void FixedUpdate() {
         if (_thrust){
-            _rigidBody.AddForce(this.transform.up * this.thrustSpeed);
+            _rigidBody.AddForce(this.transform.up * this._thrustSpeed);
         }
 
         if (_turningDirection != 0.0f){
-            _rigidBody.AddTorque(_turningDirection * this.turnSpeed);
+            _rigidBody.AddTorque(_turningDirection * this._turnSpeed);
         }
     
     }

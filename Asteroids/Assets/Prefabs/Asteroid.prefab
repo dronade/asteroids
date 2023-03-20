@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 481449515197463350}
   - component: {fileID: 481449515197463353}
   - component: {fileID: 5509514782440550986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481449515197463354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4015994, y: 0.70380867, z: -0.01676848}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,7 +53,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.92, y: 1.92}
-    newSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1.92, y: 1.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -102,12 +102,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 15f9876e8abe65a40a22c3a9102b7562, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc1751c967085a849b0a278496422779, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.92, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -146,3 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d34090d38876848aad5b1322f63ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: bc1751c967085a849b0a278496422779, type: 3}
+  - {fileID: 21300000, guid: 40acb8cff7eac254c8a89eb5c6bf7949, type: 3}
+  - {fileID: 21300000, guid: aef7e2d82b79c604ebcbedaf010ae2a0, type: 3}
+  size: 1
+  minimumSize: 0.5
+  maximumSize: 1.5
+  _speed: 10
+  _lifetime: 30

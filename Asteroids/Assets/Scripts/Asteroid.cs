@@ -5,9 +5,12 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     public Sprite[] sprites;
+
     public float size = 1.0f;
     public float minimumSize = 0.5f;
     public float maximumSize = 1.5f;
+    [SerializeField]private float _speed = 25.0f;
+    [SerializeField]private float _lifetime = 30.0f;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody;
@@ -25,6 +28,11 @@ public class Asteroid : MonoBehaviour
         this.transform.localScale = Vector3.one * this.size;
 
         _rigidBody.mass = this.size;
+    }
+
+    public void SetTrajectory(Vector2 direction){
+        _rigidBody.AddForce(direction * this._speed);
+        Destroy(this.gameObject, this._lifetime);
     }
 
 }
