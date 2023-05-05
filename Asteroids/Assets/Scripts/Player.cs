@@ -14,6 +14,10 @@ public class Player : MonoBehaviour
     private bool _thrust;
     private float _turningDirection;
 
+    private bool isDead = false;
+
+    public GameManager gameManager;
+
     private void Awake() {
         _rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -58,6 +62,18 @@ public class Player : MonoBehaviour
         this.transform.position, this.transform.rotation);
 
         bullet.Projectile(this.transform.up);
+    }
+
+// need to add explode particle & freeze time when dead
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Asteroid"){
+            Destroy(this.gameObject);
+
+            if (!isDead){
+                isDead = true;
+                gameManager.gameOver();
+            }
+        }
     }
 
 }
