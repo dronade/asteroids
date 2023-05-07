@@ -41,6 +41,7 @@ public class Asteroid : MonoBehaviour
                 Split();
                 Split();
             }
+            FindObjectOfType<GameManager>().AsteroidDestroyed(this);
             Destroy(this.gameObject);
         }
     }
