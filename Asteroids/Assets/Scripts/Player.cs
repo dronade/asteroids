@@ -52,9 +52,6 @@ public class Player : MonoBehaviour
 
         if (_turningDirection != 0.0f){
             _rigidBody.angularVelocity = _turningDirection * this._turnSpeed;
-            //{
-            //    _rigidBody.AddTorque(_turningDirection * this._turnSpeed);
-            //}
         }
     
     }
