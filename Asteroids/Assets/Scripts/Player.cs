@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     // --- Variables: ---
     public Bullet bulletPrefab;
     [SerializeField]private float _thrustSpeed = 2.0f;
-    [SerializeField]private float _turnSpeed = 0.5f;
+    [SerializeField]private float _turnSpeed = 0.25f;
     private Rigidbody2D _rigidBody;
     private bool _thrust;
     private float _turningDirection;
@@ -51,7 +51,10 @@ public class Player : MonoBehaviour
         }
 
         if (_turningDirection != 0.0f){
-            _rigidBody.AddTorque(_turningDirection * this._turnSpeed);
+            _rigidBody.angularVelocity = _turningDirection * this._turnSpeed;
+            //{
+            //    _rigidBody.AddTorque(_turningDirection * this._turnSpeed);
+            //}
         }
     
     }

@@ -34,12 +34,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void restart(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Asteroids");
     }
+
     public void rewind(){
         
     }
+
     public void mainMenu(){
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
     }
 }
