@@ -16,4 +16,19 @@ public class MainMenu : MonoBehaviour
    public void QuitGame(){
         Application.Quit();
    }
+
+    public void Achievements()
+    {
+        
+    }
+
+    public void Leaderboard()
+    {
+
+    }
+
+    public void Settings()
+    {
+
+    }
 }
