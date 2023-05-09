@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ForwardCommand : Command
 {
-    private float speed;
-    private Rigidbody2D rb;
-    private Player p;
+    private readonly float speed;
+    private readonly Rigidbody2D rb;
+    private readonly Player p;
 
     public ForwardCommand(Player player, Rigidbody2D rigidbody, float thrustSpeed) : base(player)
     {
@@ -14,6 +14,6 @@ public class ForwardCommand : Command
     }
     public override void Execute()
     {
-        rb.AddForce(p.transform.up * this.speed);
+        rb.AddForce(p.transform.up * speed);
     }
 }

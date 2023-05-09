@@ -5,7 +5,6 @@ public abstract class Command
     {
         player = p;
     }
-    
 
     public abstract void Execute();
 }
