@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
             if (!isDead){
                 isDead = true;
-                gameManager.gameOver();
+                gameManager.GameOver();
             }
         }
     }

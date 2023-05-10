@@ -17,7 +17,6 @@ public class ForwardCommand : ICommand
     }
     public void Execute()
     {
-        startTransform = p.transform;
-        rb.AddForce(p.transform.up * this.speed);
+        rb.AddForce(startTransform.up * this.speed);
     }
 }

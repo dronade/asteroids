@@ -9,26 +9,41 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-   public void StartGame(){
-        SceneManager.LoadScene("Asteroids");
-   }
 
-   public void QuitGame(){
+    public GameObject achUI;
+    public GameObject leaderboardUI;
+    public GameObject settingsUI;
+
+    public void StartGame(){
+        SceneManager.LoadScene("Asteroids");
+        achUI.SetActive(false);
+        leaderboardUI.SetActive(false);
+        settingsUI.SetActive(false);
+    }
+
+    public void QuitGame(){
         Application.Quit();
    }
 
     public void Achievements()
     {
-        
+        achUI.SetActive(true);
     }
 
     public void Leaderboard()
     {
-
+        leaderboardUI.SetActive(true);
     }
 
     public void Settings()
     {
+        settingsUI.SetActive(true);
+    }
 
+    public void ExitUI()
+    {
+        achUI.SetActive(false);
+        leaderboardUI.SetActive(false);
+        settingsUI.SetActive(false);
     }
 }
