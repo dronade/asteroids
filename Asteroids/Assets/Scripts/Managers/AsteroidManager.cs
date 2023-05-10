@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidSpawner : MonoBehaviour
+public class AsteroidManager : MonoBehaviour
 {
     public Asteroid asteroidPrefab;
     [SerializeField]private float _spawnRate = 2.0f;

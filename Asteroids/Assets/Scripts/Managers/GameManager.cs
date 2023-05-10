@@ -8,13 +8,31 @@ public class GameManager : MonoBehaviour
 {
     public TMP_Text scoreUI;
     public GameObject gameOverUI;
+    public GameObject pauseUI;
     public int score = 0;
+    public bool pauseActive = false;
 
     void Start(){
         gameOverUI.SetActive(false);
+        pauseUI.SetActive(false);
     }
 
-     public void AsteroidDestroyed(Asteroid asteroid){
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseActive == false)
+            {
+                Pause();
+            } else
+            {
+                Resume();
+            }
+            
+        }
+    }
+
+        public void AsteroidDestroyed(Asteroid asteroid){
         if (asteroid.size < 0.75f){
             SetScore(score + 100);
         } else if (asteroid.size < 1.2f){
@@ -29,19 +47,33 @@ public class GameManager : MonoBehaviour
         this.score = score;
         scoreUI.text = "Score: " + score;
     }
-    public void gameOver(){
+    public void GameOver(){
         gameOverUI.SetActive(true);
     }
 
-    public void restart(){
+    public void Restart(){
         SceneManager.LoadScene("Asteroids");
     }
 
-    public void rewind(){
+    public void Rewind(){
         
     }
 
-    public void mainMenu(){
+    public void Pause()
+    {
+        pauseUI.SetActive(true);
+        Time.timeScale = 0f;
+        pauseActive = true;
+    }
+
+    public void Resume()
+    {
+        pauseUI.SetActive(false);
+        Time.timeScale = 1f;
+        pauseActive = false;
+    }
+
+    public void MainMenu(){
         SceneManager.LoadScene("Menu");
     }
 }
