@@ -2,10 +2,10 @@
 
 public class Invoker
 {
-    Command _forwardCommand;
-    Command _turnCommand;
+    ICommand _forwardCommand;
+    ICommand _turnCommand;
 
-    public Invoker(Command forwardCommand, Command turnCommand)
+    public Invoker(ICommand forwardCommand, ICommand turnCommand)
     {
         _forwardCommand = forwardCommand;
         _turnCommand = turnCommand;
