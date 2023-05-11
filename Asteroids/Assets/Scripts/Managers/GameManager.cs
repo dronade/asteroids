@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public bool pauseActive = false;
 
+    private IAchievementService achievementService;
+
     void Start(){
         gameOverUI.SetActive(false);
         pauseUI.SetActive(false);
+        achievementService = ServiceLocator.Current.Get<IAchievementService>();
     }
 
     private void Update()
@@ -30,9 +33,15 @@ public class GameManager : MonoBehaviour
             }
             
         }
+
+        if (score >= 1000)
+        {
+            achievementService.UnlockAchievement(0);
+        }
+
     }
 
-        public void AsteroidDestroyed(Asteroid asteroid){
+    public void AsteroidDestroyed(Asteroid asteroid){
         if (asteroid.size < 0.75f){
             SetScore(score + 100);
         } else if (asteroid.size < 1.2f){
