@@ -7,12 +7,15 @@ public class TimeBody : MonoBehaviour
 
     public bool isRewinding = false;
     List<PointInTime> points;
+    public int rewindNumber = 0;
+    private IAchievementService achievementService;
 
 
     // Start is called before the first frame update
     void Start()
     {
         points = new List<PointInTime>();
+        achievementService = ServiceLocator.Current.Get<IAchievementService>();
     }
 
     // Update is called once per frame
@@ -21,11 +24,17 @@ public class TimeBody : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             StartRewind();
-        }
+            
+}
 
         if (Input.GetKeyUp(KeyCode.R))
         {
             StopRewind();
+        }
+
+        if (rewindNumber >= 3)
+        {
+            achievementService.UnlockAchievement(2);
         }
     }
 
@@ -44,7 +53,7 @@ public class TimeBody : MonoBehaviour
     {
         if (points.Count > 0)
         {
-
+            rewindNumber++;
             PointInTime pit = points[0];
             transform.position = pit.position;
             transform.rotation = pit.rotation;

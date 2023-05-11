@@ -29,10 +29,10 @@ public class LocalAchievementService : IAchievementService
         {
             Achievement[] newAchievements =
             {
-                new Achievement(0, "High Ball", "Get to 1000 points in under 1 minute", false),
-                new Achievement(1, "achievement2", "The second achievement", false),
-                new Achievement(2, "achievement3", "The third achievement", false),
-                new Achievement(3, "achievement4", "The fourth achievement", false)
+                new Achievement(0, "High Ball", "Get to 1000 points in under 30 seconds", false),
+                new Achievement(1, "Pacifist?", "Survive for 1 minute without destroying an asteroid", false),
+                new Achievement(2, "Temporal Rewind", "Rewind three times in a mission", false),
+                new Achievement(3, "Bane of the Asteroids", "Score over 5,000 points!", false)
             };
             
             AchievementArray achievementArray = new AchievementArray(newAchievements);

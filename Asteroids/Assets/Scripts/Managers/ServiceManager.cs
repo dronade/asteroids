@@ -19,7 +19,5 @@ public class ServiceManager : MonoBehaviour
             LogWrapperAchievementService logWrapperAchievementService = new LogWrapperAchievementService(nullAchievementService);
             ServiceLocator.Current.Register<IAchievementService>(logWrapperAchievementService);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 }

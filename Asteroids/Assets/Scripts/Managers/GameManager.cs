@@ -7,10 +7,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TMP_Text scoreUI;
+    public TMP_Text timeUI;
     public GameObject gameOverUI;
     public GameObject pauseUI;
     public int score = 0;
     public bool pauseActive = false;
+    public int time = 0;
+    public bool hasDestroyed = false;
+
 
     private IAchievementService achievementService;
 
@@ -18,6 +22,8 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(false);
         pauseUI.SetActive(false);
         achievementService = ServiceLocator.Current.Get<IAchievementService>();
+        StopCoroutine(Counter());
+        StartCoroutine(Counter());
     }
 
     private void Update()
@@ -34,14 +40,27 @@ public class GameManager : MonoBehaviour
             
         }
 
-        if (score >= 1000)
+        DisplayTime(time);
+
+        if (score >= 1000 && time <= 30)
         {
             achievementService.UnlockAchievement(0);
+        }
+
+        if (hasDestroyed = false && time <= 60)
+        {
+            achievementService.UnlockAchievement(1);
+        }
+
+        if(score >= 5000)
+        {
+            achievementService.UnlockAchievement(3);
         }
 
     }
 
     public void AsteroidDestroyed(Asteroid asteroid){
+        hasDestroyed = true;
         if (asteroid.size < 0.75f){
             SetScore(score + 100);
         } else if (asteroid.size < 1.2f){
@@ -56,16 +75,29 @@ public class GameManager : MonoBehaviour
         this.score = score;
         scoreUI.text = "Score: " + score;
     }
+
+    private IEnumerator Counter()
+    {
+        while (true)
+        {
+            time++;
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void DisplayTime(int timeToDisplay)
+    {
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        timeUI.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    }
+
     public void GameOver(){
         gameOverUI.SetActive(true);
     }
 
     public void Restart(){
         SceneManager.LoadScene("Asteroids");
-    }
-
-    public void Rewind(){
-        
     }
 
     public void Pause()
