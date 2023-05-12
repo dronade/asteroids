@@ -24,8 +24,7 @@ public class TimeBody : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             StartRewind();
-            
-}
+        }
 
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -40,11 +39,11 @@ public class TimeBody : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isRewinding)
+        if (isRewinding)
         {
             Rewind();
-
-        } else
+        }
+        else
         {
             Record();
         }
@@ -58,11 +57,12 @@ public class TimeBody : MonoBehaviour
             transform.position = pit.position;
             transform.rotation = pit.rotation;
             points.RemoveAt(0);
-        } else
-        {
-            StopRewind ();
         }
-        
+        else
+        {
+            StopRewind();
+        }
+
     }
 
     public void Record()
@@ -73,7 +73,7 @@ public class TimeBody : MonoBehaviour
 
     public void StartRewind()
     {
-        isRewinding=true;
+        isRewinding = true;
     }
 
     public void StopRewind()
