@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class TimeBody : MonoBehaviour
 {
-
     public bool isRewinding = false;
     List<PointInTime> points;
     public int rewindNumber = 0;
     private IAchievementService achievementService;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         points = new List<PointInTime>();
         achievementService = ServiceLocator.Current.Get<IAchievementService>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -62,7 +58,6 @@ public class TimeBody : MonoBehaviour
         {
             StopRewind();
         }
-
     }
 
     public void Record()
