@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
 
     public void Update()
     {
+        // NOTE: need to change to not using playerprefs
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("Highscore", 0);
     }
 

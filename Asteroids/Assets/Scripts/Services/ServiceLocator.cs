@@ -20,7 +20,7 @@ public class ServiceLocator
         string key = typeof(T).Name;
         if (!services.ContainsKey(key))
         {
-            Debug.LogError($"{key} not registered with {GetType().Name}");
+            Debug.LogError($"Key is not registered");
             throw new InvalidOperationException();
         }
         return (T)services[key];
@@ -31,7 +31,7 @@ public class ServiceLocator
         string key = typeof(T).Name;
         if (services.ContainsKey(key))
         {
-            Debug.LogError($"Attempted to register service of type {key} which is already registered with the {GetType().Name}.");
+            Debug.LogError($"Key already registered");
             return;
         }
         services.Add(key, service);
@@ -42,7 +42,7 @@ public class ServiceLocator
         string key = typeof(T).Name;
         if (!services.ContainsKey(key))
         {
-            Debug.LogError($"Attempted to unregister service of type {key} which is not registered with the {GetType().Name}.");
+            Debug.LogError($"Key already registered");
             return;
         }
         services.Remove(key);
