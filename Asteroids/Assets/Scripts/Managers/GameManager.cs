@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool pauseActive = false;
     public int time = 0;
     public bool hasDestroyed = false;
+    public int _highScore;
 
 
     private IAchievementService achievementService;
@@ -74,6 +75,12 @@ public class GameManager : MonoBehaviour
     {
         this.score = score;
         scoreUI.text = "Score: " + score;
+
+
+        if (score > PlayerPrefs.GetInt("Highscore", 0)){
+            _highScore = score;
+            PlayerPrefs.SetInt("Highscore", _highScore);
+        }
     }
 
     private IEnumerator Counter()
